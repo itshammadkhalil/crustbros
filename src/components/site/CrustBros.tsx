@@ -612,26 +612,18 @@ Thank you! 🙏`;
 
 // ============== ROOT ==============
 function Inner() {
-  const { setOpen } = useCart();
+  const { setOpen, add } = useCart();
   const [adding, setAdding] = useState<MenuItem | null>(null);
   const [closedOpen, setClosedOpen] = useState(false);
   const [checkout, setCheckout] = useState(false);
 
   const handleAdd = (item: MenuItem) => {
-    if (item.sizes.length > 1) setAdding(item);
-    else {
+    if (item.sizes.length > 1) {
+      setAdding(item);
+    } else {
       const s = item.sizes[0];
-      useCart; // noop
-      // direct add via context:
-      (window as Window & { __cartAdd?: (i: MenuItem) => void }).__cartAdd?.(item);
-      // fallback: open popup if single but quick add via helper below
-      if (s) addDirect(item);
+      add({ itemId: item.id, name: item.name, size: s.size, price: s.price, qty: 1, image: item.image });
     }
-  };
-  const { add } = useCart();
-  const addDirect = (item: MenuItem) => {
-    const s = item.sizes[0];
-    add({ itemId: item.id, name: item.name, size: s.size, price: s.price, qty: 1, image: item.image });
   };
 
   const handleCheckout = () => {
