@@ -1,29 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import CrustBrosSite from "@/components/site/CrustBros";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Crust Bros — Wood-Fired Pizzas, Burgers & Broast in Jahanian" },
+      { name: "description", content: "Crust Bros Jahanian — wood-fired pizzas, juicy burgers, broast, deals & free delivery. Order now, open 10 AM – 2 AM daily." },
+      { property: "og:title", content: "Crust Bros — Jahanian's Favourite Food Stop" },
+      { property: "og:description", content: "Pizzas, burgers, broast and unbeatable deals. Free delivery. Open 10 AM – 2 AM." },
     ],
   }),
-  component: Index,
+  component: () => <CrustBrosSite />,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
