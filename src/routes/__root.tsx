@@ -91,6 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "A modern restaurant ordering website for Crust Bros, enabling online orders and menu browsing." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b2d21ab8-12c6-48fe-a785-1866ea11b21c/id-preview-795c9576--f5f35584-21e8-4fbf-a6eb-7d7cee041350.lovable.app-1782732074809.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b2d21ab8-12c6-48fe-a785-1866ea11b21c/id-preview-795c9576--f5f35584-21e8-4fbf-a6eb-7d7cee041350.lovable.app-1782732074809.png" },
+      { name: "theme-color", content: "#141414" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "Crust Bros" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -99,7 +103,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", sizes: "16x16", href: "/icons/icon-16.png" },
       { rel: "apple-touch-icon", href: "/icons/icon-192.png" },
     ],
-    meta: undefined as never,
   }),
   shellComponent: RootShell,
   component: RootComponent,
