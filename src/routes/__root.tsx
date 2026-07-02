@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { registerPWA } from "../lib/pwa";
+import { InstallPrompt } from "../components/site/InstallPrompt";
 
 function NotFoundComponent() {
   return (
@@ -89,12 +91,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "A modern restaurant ordering website for Crust Bros, enabling online orders and menu browsing." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b2d21ab8-12c6-48fe-a785-1866ea11b21c/id-preview-795c9576--f5f35584-21e8-4fbf-a6eb-7d7cee041350.lovable.app-1782732074809.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b2d21ab8-12c6-48fe-a785-1866ea11b21c/id-preview-795c9576--f5f35584-21e8-4fbf-a6eb-7d7cee041350.lovable.app-1782732074809.png" },
+      { name: "theme-color", content: "#141414" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "Crust Bros" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/icons/icon-32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/icons/icon-16.png" },
+      { rel: "apple-touch-icon", href: "/icons/icon-192.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -120,10 +127,15 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    registerPWA();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <InstallPrompt />
     </QueryClientProvider>
   );
 }
