@@ -513,9 +513,9 @@ function ClosedPopup({ onClose }: { onClose: () => void }) {
     <div className="fixed inset-0 z-[70] grid place-items-center bg-black/70 p-4" onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()} className="max-w-sm w-full bg-white rounded-3xl p-6 text-center shadow-2xl animate-in zoom-in-95">
         <span className="mx-auto h-14 w-14 grid place-items-center rounded-full bg-[var(--charcoal-deep)] text-[var(--brand-yellow)]"><Moon className="h-7 w-7" /></span>
-        <h3 className="mt-4 font-display text-2xl text-[var(--charcoal)]">We're Closed Right Now</h3>
-        <p className="mt-2 text-sm text-[var(--muted-foreground)]">Thank you for choosing Crust Bros! Our kitchen is open daily from 10:00 AM to 2:00 AM — come back during these hours and we'd love to serve you. See you soon!</p>
-        <button onClick={onClose} className="mt-5 w-full py-2.5 rounded-full bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] font-bold">Okay, Got It</button>
+        <h3 className="mt-4 font-display text-2xl text-[var(--charcoal)]">We've Closed for the Night 🌙</h3>
+        <p className="mt-2 text-sm text-[var(--muted-foreground)]">Aw, you just missed us! Our kitchen is resting right now, but we're already excited to make your food fresh when we open again at 10:00 AM. Your cart is safe — we'll be right here waiting for you. 💛</p>
+        <button onClick={onClose} className="mt-5 w-full py-2.5 rounded-full bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] font-bold">Okay, I'll Come Back</button>
       </div>
     </div>
   );
