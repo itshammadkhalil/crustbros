@@ -81,11 +81,11 @@ function Hero() {
           <p className="mt-5 text-base md:text-lg text-[var(--cream)]/85 max-w-xl">
             Wood-fired pizzas, juicy burgers, sizzling broast and the deals everyone in Jahanian is talking about. Made fresh, delivered hot.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <a href="#menu" className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] text-sm font-semibold hover:brightness-110 transition shadow-lg shadow-yellow-500/20">
+          <div className="mt-7 flex flex-wrap gap-2.5">
+            <a href="#menu" className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] text-[13px] font-semibold hover:brightness-110 transition shadow-lg shadow-yellow-500/20">
               View Menu
             </a>
-            <a href="#deals" className="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-[var(--cream)]/40 text-[var(--cream)] text-sm font-semibold hover:bg-white/10 transition">
+            <a href="#deals" className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full border border-[var(--cream)]/40 text-[var(--cream)] text-[13px] font-semibold hover:bg-white/10 transition">
               Order Now
             </a>
           </div>
