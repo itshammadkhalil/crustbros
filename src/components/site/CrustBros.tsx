@@ -463,8 +463,9 @@ function Footer() {
           <p className="text-sm text-[var(--cream)]/80">Free delivery</p>
         </div>
       </div>
-      <div className="mt-10 pt-5 border-t border-white/10 text-center text-xs text-[var(--cream)]/60">
-        Made by <a href="https://novastackltd.com" target="_blank" rel="noopener noreferrer" className="text-[var(--brand-yellow)] hover:underline font-semibold">NovaStack</a>
+      <div className="mx-auto max-w-7xl px-4 md:px-6 mt-10 pt-5 border-t border-white/10 text-xs text-[var(--cream)]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+        <p>© 2026 Crust Bros. All rights reserved.</p>
+        <p>Made by <a href="https://novastackltd.com" target="_blank" rel="noopener noreferrer" className="text-[var(--brand-yellow)] hover:underline font-semibold">NovaStack</a></p>
       </div>
     </footer>
   );
