@@ -59,7 +59,7 @@ function Navbar({ onCart }: { onCart: () => void }) {
 }
 
 // ============== HERO ==============
-function Hero() {
+function Hero({ onClosedClick }: { onClosedClick: () => void }) {
   const [open, setOpen] = useState(isOpenNow());
   useEffect(() => {
     const t = setInterval(() => setOpen(isOpenNow()), 60_000);
@@ -85,8 +85,19 @@ function Hero() {
             <a href="#menu" className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] text-[13px] font-semibold hover:brightness-110 transition shadow-lg shadow-yellow-500/20">
               View Menu
             </a>
-            <a href="#deals" className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full border border-[var(--cream)]/40 text-[var(--cream)] text-[13px] font-semibold hover:bg-white/10 transition">
-              Order Now
+            <a
+              href="https://wa.me/923276003399?text=Hi%20Crust%20Bros!%20I%27d%20like%20to%20place%20an%20order%20%F0%9F%8D%95"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                if (!isOpenNow()) {
+                  e.preventDefault();
+                  onClosedClick();
+                }
+              }}
+              className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full border border-[var(--cream)]/40 text-[var(--cream)] text-[13px] font-semibold hover:bg-white/10 transition"
+            >
+              💬 WhatsApp Us
             </a>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -656,7 +667,7 @@ function Inner() {
   return (
     <div className="min-h-screen">
       <Navbar onCart={() => setOpen(true)} />
-      <Hero />
+      <Hero onClosedClick={() => setClosedOpen(true)} />
       <MenuSection onAdd={handleAdd} />
       <DealsSection onAdd={handleAdd} />
       <About />
