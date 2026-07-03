@@ -85,20 +85,23 @@ function Hero({ onClosedClick }: { onClosedClick: () => void }) {
             <a href="#menu" className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] text-[13px] font-semibold hover:brightness-110 transition shadow-lg shadow-yellow-500/20">
               View Menu
             </a>
-            <a
-              href="https://wa.me/923276003399?text=Hi%20Crust%20Bros!%20I%27d%20like%20to%20place%20an%20order%20%F0%9F%8D%95"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => {
+            <button
+              type="button"
+              onClick={() => {
                 if (!isOpenNow()) {
-                  e.preventDefault();
                   onClosedClick();
+                  return;
                 }
+                window.open(
+                  "https://wa.me/923276003399?text=Hi%20Crust%20Bros!%20I%27d%20like%20to%20place%20an%20order%20%F0%9F%8D%95",
+                  "_blank",
+                  "noopener,noreferrer"
+                );
               }}
               className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-full border border-[var(--cream)]/40 text-[var(--cream)] text-[13px] font-semibold hover:bg-white/10 transition"
             >
               💬 WhatsApp Us
-            </a>
+            </button>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             {[
