@@ -20,10 +20,13 @@ export function registerPWA() {
 
   if (shouldRefuse) {
     navigator.serviceWorker.getRegistrations().then((regs) => {
-      for (const r of regs) {
-        if (r.active?.scriptURL.endsWith("/sw.js")) r.unregister();
-      }
+      for (const r of regs) r.unregister();
     }).catch(() => {});
+    // Clear any caches left behind by a previously-registered SW so stale
+    // HTML/JS can't strand the page in a non-hydrating state.
+    if (typeof caches !== "undefined") {
+      caches.keys().then((keys) => keys.forEach((k) => caches.delete(k))).catch(() => {});
+    }
     return;
   }
 
