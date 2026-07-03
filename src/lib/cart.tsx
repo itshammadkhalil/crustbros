@@ -61,7 +61,17 @@ export function useCart() {
 }
 
 export function isOpenNow(d = new Date()) {
+  // Convert to Pakistan Standard Time (Asia/Karachi, UTC+5) so status is
+  // accurate regardless of the visitor's local timezone.
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Karachi",
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  }).formatToParts(d);
+  const hour = Number(parts.find((p) => p.type === "hour")?.value ?? "0");
+  const minute = Number(parts.find((p) => p.type === "minute")?.value ?? "0");
+  const h = (hour % 24) + minute / 60;
   // Open 10:00 to 02:00 (next day)
-  const h = d.getHours() + d.getMinutes() / 60;
   return h >= 10 || h < 2;
 }
