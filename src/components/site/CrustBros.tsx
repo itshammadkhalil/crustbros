@@ -10,7 +10,7 @@ import { CartProvider, useCart, isOpenNow, type CartLine } from "@/lib/cart";
 import { MENU, CATEGORIES, DEAL_FILTERS, type MenuItem } from "@/data/menu";
 import { cn } from "@/lib/utils";
 
-const WA_NUMBER = "923097000178";
+const WA_NUMBER = "923276003399";
 const FB_URL = "https://www.facebook.com/crustbrosjahanian/";
 
 // ============== NAV ==============
@@ -539,21 +539,27 @@ function Checkout({ onClose }: { onClose: () => void }) {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) return;
     if (type === "Home Delivery" && !addr.trim()) return;
-    const lineItems = lines.map((l) => `• ${l.name} (${l.size}) x${l.qty} — Rs ${l.price * l.qty}`).join("\n");
+    const lineItems = lines
+      .map((l) => `🛒 ${l.name} (${l.size}) × ${l.qty} — Rs ${l.price * l.qty} _(Rs ${l.price} ea)_`)
+      .join("\n");
     const msg =
-`🍕 *NEW ORDER — CRUST BROS*
+`🍕 *NEW ORDER — CRUST BROS* 🍕
 
-*Order Type:* ${type}
-*Name:* ${name}
-*Phone:* ${phone}` +
-(type === "Home Delivery" ? `\n*Address:* ${addr}` : "") +
-(notes.trim() ? `\n*Notes:* ${notes}` : "") +
-`\n\n*Items:*\n${lineItems}\n
-*Subtotal:* Rs ${subtotal}
-*Delivery:* ${type === "Home Delivery" ? (delivery === 0 ? "Free" : `Rs ${delivery}`) : "N/A"}
-*Total:* Rs ${total}
+👤 *Customer Details*
+• *Name:* ${name}
+• *Phone:* ${phone}
+${type === "Home Delivery" ? `📍 *Address:* ${addr}\n` : ""}🧾 *Order Type:* ${type}${notes.trim() ? `\n📝 *Notes:* ${notes}` : ""}
 
-Thank you! 🙏`;
+━━━━━━━━━━━━━━━
+*Order Items*
+${lineItems}
+━━━━━━━━━━━━━━━
+
+🧮 *Subtotal:* Rs ${subtotal}
+🚚 *Delivery:* ${type === "Home Delivery" ? (delivery === 0 ? "Free" : `Rs ${delivery}`) : "N/A"}
+💰 *Total:* *Rs ${total}*
+
+🙏 Thank you for ordering from *Crust Bros*! We'll confirm your order shortly.`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
     setDone(true);
     setTimeout(() => {
