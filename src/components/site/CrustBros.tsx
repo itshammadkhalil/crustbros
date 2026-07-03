@@ -540,26 +540,42 @@ function Checkout({ onClose }: { onClose: () => void }) {
     if (!name.trim() || !phone.trim()) return;
     if (type === "Home Delivery" && !addr.trim()) return;
     const lineItems = lines
-      .map((l) => `🛒 ${l.name} (${l.size}) × ${l.qty} — Rs ${l.price * l.qty} _(Rs ${l.price} ea)_`)
+      .map((l, i) => `${i + 1}. ${l.name}${l.size && l.size !== "Regular" ? ` (${l.size})` : ""} x${l.qty} — Rs. ${l.price * l.qty}`)
       .join("\n");
+    const deliveryLine =
+      type === "Home Delivery"
+        ? `Delivery: Rs. ${delivery === 0 ? "0 (Free)" : delivery}`
+        : `Delivery: N/A (${type})`;
     const msg =
-`🍕 *NEW ORDER — CRUST BROS* 🍕
+`🍕 *NEW ORDER - CRUST BROS* 🍕
+
+━━━━━━━━━━━━━━━━━━━
 
 👤 *Customer Details*
-• *Name:* ${name}
-• *Phone:* ${phone}
-${type === "Home Delivery" ? `📍 *Address:* ${addr}\n` : ""}🧾 *Order Type:* ${type}${notes.trim() ? `\n📝 *Notes:* ${notes}` : ""}
 
-━━━━━━━━━━━━━━━
-*Order Items*
+Name: ${name}
+
+Phone: ${phone}
+${type === "Home Delivery" ? `\nAddress: ${addr}\n` : `\nOrder Type: ${type}\n`}${notes.trim() ? `\nNotes: ${notes}\n` : ""}
+🛒 *Order Items*
+
 ${lineItems}
-━━━━━━━━━━━━━━━
 
-🧮 *Subtotal:* Rs ${subtotal}
-🚚 *Delivery:* ${type === "Home Delivery" ? (delivery === 0 ? "Free" : `Rs ${delivery}`) : "N/A"}
-💰 *Total:* *Rs ${total}*
+━━━━━━━━━━━━━━━━━━━
 
-🙏 Thank you for ordering from *Crust Bros*! We'll confirm your order shortly.`;
+💰 *Bill Summary*
+
+Subtotal: Rs. ${subtotal}
+
+${deliveryLine}
+
+*Total: Rs. ${total}*
+
+━━━━━━━━━━━━━━━━━━━
+
+🙏 Thank you for choosing Crust Bros!
+
+We'll confirm your order shortly. 🔥`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
     setDone(true);
     setTimeout(() => {
