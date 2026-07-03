@@ -429,7 +429,7 @@ function Reviews() {
 function Footer() {
   return (
     <footer id="contact" className="bg-[var(--charcoal-deep)] text-[var(--cream)] pt-14 pb-6">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <div className="flex items-center gap-2">
             <img src={logo} alt="Crust Bros" className="h-12 w-12 object-contain" />
