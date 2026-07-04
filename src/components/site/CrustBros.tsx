@@ -73,7 +73,7 @@ function Hero({ onClosedClick }: { onClosedClick: () => void }) {
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/10 text-xs md:text-sm text-[var(--cream)]">
             <span className={cn("h-2 w-2 rounded-full", open ? "bg-emerald-400 animate-pulse" : "bg-red-500")} />
-            {open ? "Open Now" : "Closed Now"} · 10 AM – 2 AM
+            {open ? "Open Now" : "Closed"}
           </span>
           <h1 className="mt-5 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-white">
             Crust <span className="text-gradient-brand">Bros</span>
