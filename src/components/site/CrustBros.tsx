@@ -18,7 +18,7 @@ function Navbar({ onCart }: { onCart: () => void }) {
   const { count } = useCart();
   const [mobile, setMobile] = useState(false);
   const links = [
-    ["Home", "#home"], ["Menu", "#menu"], ["Deals", "#deals"],
+    ["Home", "#home"], ["Menu", "#menu"],
     ["About", "#about"], ["Reviews", "#reviews"], ["Contact", "#contact"],
   ];
   return (
