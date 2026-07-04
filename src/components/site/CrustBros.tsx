@@ -641,7 +641,7 @@ function Inner() {
       <Navbar onCart={() => setOpen(true)} />
       <Hero onClosedClick={() => setClosedOpen(true)} />
       <MenuSection onAdd={handleAdd} />
-      <DealsSection onAdd={handleAdd} />
+      
       <About />
       <Reviews />
       <Footer />
