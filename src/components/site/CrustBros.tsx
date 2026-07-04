@@ -412,7 +412,7 @@ function Footer() {
         <div>
           <h4 className="font-display text-lg mb-3 text-[var(--brand-yellow)]">Quick Links</h4>
           <ul className="space-y-2 text-sm text-[var(--cream)]/80">
-            {[["Menu","#menu"],["Deals","#deals"],["About","#about"],["Reviews","#reviews"]].map(([l,h]) => (
+            {[["Menu","#menu"],["About","#about"],["Reviews","#reviews"]].map(([l,h]) => (
               <li key={h}><a href={h} className="hover:text-[var(--brand-yellow)]">{l}</a></li>
             ))}
           </ul>
