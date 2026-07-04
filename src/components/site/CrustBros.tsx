@@ -284,38 +284,6 @@ function MenuSection({ onAdd }: { onAdd: (i: MenuItem) => void }) {
   );
 }
 
-// ============== DEALS SECTION ==============
-function DealsSection({ onAdd }: { onAdd: (i: MenuItem) => void }) {
-  const [f, setF] = useState<string>("All");
-  const items = useMemo(() => {
-    const all = MENU.filter((m) => m.category === "Deals");
-    return f === "All" ? all : all.filter((m) => m.dealGroup === f);
-  }, [f]);
-  return (
-    <section id="deals" className="py-16 md:py-24 bg-[var(--charcoal-deep)] text-[var(--cream)]">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-bold tracking-[0.3em] text-[var(--brand-yellow)]">SAVE MORE</span>
-          <h2 className="mt-2 font-display text-4xl md:text-6xl">
-            Deals <span className="text-gradient-brand">&</span> Offers
-          </h2>
-        </div>
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {DEAL_FILTERS.map((d) => (
-            <button key={d} onClick={() => setF(d)} className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-semibold border transition",
-              f === d ? "bg-[var(--brand-yellow)] text-[var(--charcoal-deep)] border-[var(--brand-yellow)]"
-                      : "bg-white/5 text-[var(--cream)] border-white/15 hover:border-[var(--brand-yellow)]"
-            )}>{d}</button>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">
-          {items.map((it) => <ItemCard key={it.id} item={it} onAdd={onAdd} />)}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ============== ABOUT ==============
 function About() {
