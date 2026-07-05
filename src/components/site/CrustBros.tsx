@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 import hero from "@/assets/hero.jpg";
+import aboutImage from "@/assets/about-pizza.jpg";
 import { CartProvider, useCart, isOpenNow, type CartLine } from "@/lib/cart";
 import { MENU, CATEGORIES, DEAL_FILTERS, type MenuItem } from "@/data/menu";
 import { cn } from "@/lib/utils";
