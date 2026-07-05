@@ -296,7 +296,7 @@ function About() {
   const detail = [
     [Clock, "Opening Hours", "10:00 AM to 02:00 AM"],
     [Snowflake, "Indoor Dining", "Air Conditioned Hall"],
-    [MapPin, "Delivery", "Free within 3km · Outside city available"],
+    [MapPin, "Delivery", "Free within 3km"],
     [MapPin, "Branch", "Loha Bazar, Jahanian"],
   ] as const;
   return (
