@@ -6,7 +6,6 @@ import {
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 import hero from "@/assets/hero.jpg";
-import aboutImage from "@/assets/about-pizza.jpg";
 import { CartProvider, useCart, isOpenNow, type CartLine } from "@/lib/cart";
 import { MENU, CATEGORIES, DEAL_FILTERS, type MenuItem } from "@/data/menu";
 import { cn } from "@/lib/utils";
@@ -301,44 +300,33 @@ function About() {
     [MapPin, "Branch", "Loha Bazar, Jahanian"],
   ] as const;
   return (
-    <section id="about" className="py-16 md:py-24 bg-[var(--charcoal-deep)] text-[var(--cream)]">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          <div className="order-2 lg:order-1">
-            <span className="text-xs font-bold tracking-[0.3em] text-[var(--brand-red)]">OUR STORY</span>
-            <h2 className="mt-2 font-display text-4xl md:text-6xl text-white">
-              Cooked with Love,<br />
-              <span className="text-gradient-brand">Served with Pride</span>
-            </h2>
-            <p className="mt-5 text-[var(--cream)]/75 leading-relaxed">
-              Crust Bros began with a simple promise: feed Jahanian the way we'd feed our own family — fresh, generous, and made with genuine care. Every pizza, burger, and broast that leaves our kitchen carries that same promise, whether you're dining in our air-conditioned hall or welcoming us to your doorstep.
-            </p>
-            <p className="mt-4 text-[var(--cream)]/75 leading-relaxed">
-              No shortcuts, no compromises — just real ingredients, cooked to order, the same way since day one. From our wood-fired pizzas to the signature Crust Bros burger, every dish is made fresh because that's the only way we know how to cook.
-            </p>
-          </div>
-          <div className="order-1 lg:order-2 relative">
-            <div className="absolute -inset-4 bg-[var(--brand-red)]/10 blur-3xl rounded-full pointer-events-none" aria-hidden />
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
-              <img src={aboutImage} alt="Wood-fired pizza at Crust Bros" width={1024} height={1024} loading="lazy" className="w-full h-full object-cover aspect-[4/5] md:aspect-[5/6]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-            </div>
+    <section id="about" className="py-16 md:py-24 bg-[var(--cream)]">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <span className="text-xs font-bold tracking-[0.3em] text-[var(--brand-red)]">OUR STORY</span>
+          <h2 className="mt-2 font-display text-4xl md:text-6xl text-[var(--charcoal)]">
+            Cooked with Love,<br />
+            <span className="text-gradient-brand">Served with Pride</span>
+          </h2>
+          <p className="mt-5 text-[var(--charcoal)]/80 leading-relaxed">
+            Crust Bros began with a simple promise: feed Jahanian the way we'd feed our own family — fresh, generous, and made with genuine care. Every pizza, burger, and broast that leaves our kitchen carries that same promise, whether you're dining in our air-conditioned hall or welcoming us to your doorstep.
+          </p>
+          <p className="mt-4 text-[var(--charcoal)]/80 leading-relaxed">
+            No shortcuts, no compromises — just real ingredients, cooked to order, the same way since day one. From our wood-fired pizzas to the signature Crust Bros burger, every dish is made fresh because that's the only way we know how to cook.
+          </p>
+          <div className="mt-8 grid grid-cols-2 gap-3">
+            {quality.map(([Icon, label]) => (
+              <div key={label} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-black/5">
+                <span className="h-9 w-9 grid place-items-center rounded-full bg-[var(--brand-yellow)]/20 text-[var(--brand-red)]"><Icon className="h-4 w-4" /></span>
+                <span className="text-sm font-semibold text-[var(--charcoal)]">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
-
-        <div className="mt-12 md:mt-16 grid grid-cols-2 gap-3 md:gap-4">
-          {quality.map(([Icon, label]) => (
-            <div key={label} className="flex items-center gap-3 p-4 md:p-5 rounded-2xl bg-[var(--charcoal)] border border-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-yellow)]/40 hover:shadow-lg hover:shadow-[var(--brand-yellow)]/5">
-              <span className="h-10 w-10 shrink-0 grid place-items-center rounded-full bg-[var(--brand-yellow)]/15 text-[var(--brand-yellow)]"><Icon className="h-4 w-4" /></span>
-              <span className="text-sm font-semibold text-[var(--cream)]">{label}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-4 md:mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 gap-3 lg:gap-4 lg:mt-16">
           {detail.map(([Icon, label, val]) => (
-            <div key={label} className="p-4 md:p-5 rounded-2xl bg-[var(--charcoal)] text-[var(--cream)] border border-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-yellow)]/40 hover:shadow-lg hover:shadow-[var(--brand-yellow)]/5">
-              <span className="h-10 w-10 grid place-items-center rounded-full bg-[var(--brand-yellow)]/15 text-[var(--brand-yellow)]"><Icon className="h-4 w-4" /></span>
+            <div key={label} className="p-4 md:p-5 rounded-2xl bg-[var(--charcoal-deep)] text-[var(--cream)] border border-white/5">
+              <span className="h-9 w-9 grid place-items-center rounded-full bg-[var(--brand-yellow)]/20 text-[var(--brand-yellow)]"><Icon className="h-4 w-4" /></span>
               <div className="mt-3 text-[11px] uppercase tracking-wider text-[var(--cream)]/60">{label}</div>
               <div className="mt-1 text-sm font-semibold leading-snug">{val}</div>
             </div>
